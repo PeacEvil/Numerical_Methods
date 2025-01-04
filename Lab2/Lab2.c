@@ -34,4 +34,5 @@ R:  x3 = (x1 * f(x2) - x2 * f(x1)) / (f(x2) - f(x1));
     printf("\n\n\t\tThe approximate root is %f\n", x3);
 
     return 0;
+
 }
