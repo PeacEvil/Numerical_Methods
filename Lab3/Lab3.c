@@ -3,39 +3,36 @@
 //NEWTON-RAPHSON METHOD IN C PROGRAMMING.]
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
+float f(float x)
+{
+    return x*log10(x)-1.2;
+}
+float df(float x)
+{
+    return log10(x)+0.43429;
+}
 
-#define f(x) (x * log10(x) - 12.2)
-#define df(x) (log10(x) + (1 / log(10))) // Derivative of f(x)
-
-int main() {
-    double x0, x1, e;
-    int i = 1;
-
-    printf("Enter the initial guess x0: ");
-    scanf("%lf", &x0);
-
-    printf("Enter the tolerance error: ");
-    scanf("%lf", &e);
-
-    printf("---------------------------------------------------------------------------\n");
-    printf("Iteration\tx0\t\tf(x0)\t\tdf(x0)\t\tx1\n");
-    printf("---------------------------------------------------------------------------\n");
-
-    do {
-        x1 = x0 - (f(x0) / df(x0));
-        printf("%d\t\t%lf\t%lf\t%lf\t%lf\n", i, x0, f(x0), df(x0), x1);
-
-        if (fabs(x1 - x0) < e) {
-            break;
+int main()
+{
+    int iter, maxmiter;
+    float h, x0, x1, terr;
+    printf("\nEnter x0:");
+    scanf("%f", &x0);
+    printf("\nEnter the tolerance error:");
+    scanf("%f",&terr);
+    printf("\nEnter maximum iteration:");
+    scanf("%d",&maxmiter);
+    for(iter=1; iter<=maxmiter; iter++)
+    {
+        h=f(x0)/df(x0);
+        x1=x0-h;
+        printf("At Iteration no. %d. X= %f\n", iter, x1);
+        if(fabs(h)<terr)
+        {
+            printf("After %d iterations, root= %f\n",iter,x1);
+            return 0;
         }
-
-        x0 = x1;
-        i++;
-    } while (1);
-
-    printf("---------------------------------------------------------------------------\n");
-    printf("\nThe approximate root is %lf\n", x1);
-
-    return 0;
+        x0=x1;
+    }
+    printf("The required solution doesn't converge or iterations are insufficient\n");
 }
