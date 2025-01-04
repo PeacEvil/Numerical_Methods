@@ -1,0 +1,6 @@
+LAB:
+TO FIND AN APPROXIMATION ROOT OF NON-LINEAR EQUATION xe^(x)-cosx=0 ACCURATE TO FOUR DECIMAL PLACES APPLYING SECANT METHOD IN C PROGRAMMING
+
+
+Output 
+![image](https://github.com/user-attachments/assets/b867a5dc-aaad-4747-aa62-09cd5a21ef75)
